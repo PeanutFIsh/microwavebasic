@@ -6,13 +6,55 @@
                 text-align: center;
             }
 
+            .info {
+                margin-top: 75px;
+                margin-bottom: 100px;
+                margin-left: 100px;
+                margin-right: 100px;
+
+                border-style: double;
+                border-color: lightgray;
+                border-width: 10px;
+
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .code {
+                margin-left:300px;
+                margin-right: 300px;
+                padding: 5px;
+                
+                border-left: 5px solid  cyan;
+                background-color: blue;
+                color: white;
+                text-align: left;
+            }
+            h1 {
+                font-size: 72;
+                font-weight: normal;
+            }
+
+            h3 {
+                font-size: 24;
+                font-weight: normal;
+                color: cyan;
+            }
+            
             body {
                 background-color: black;
                 color: white;
+                font-family: 'PxPlus IBM VGA8';
             }
 
             cyan {
                 color: cyan;
+            }
+
+            pink {
+                color: magenta;
             }
 
             @font-face {
@@ -23,7 +65,30 @@
     </head>
     <body>
         <div class="center">
-            hello <cyan>there</cyan>
+            <img src="https://i.imgur.com/UaI1024.png"><br>
+            <div class="info">
+                <h3>Welcome to the <pink>MicrowaveBASIC Homepage!</pink></h3>
+                <cyan>MicrowaveBASIC</cyan> is a simple and open source BASIC Interpreter written in C++. Currently in ALPHA, the programming language is very limited.<br>
+                This is also the first ever C++ project I am working on. (lmao I am litterally learning the language at the same time I code this so expect stuff like bad optimization)<br>
+                <br>This is also a part of a project I am currently working on. Once done, the project will be introduced on youtube and an embed video will be shown on this page<br>
+                
+
+                <br><h3>What's the <pink>purpose</pink> of it?</h3>
+                
+                The purpose of <cyan>MicrowaveBASIC</cyan> is to remake an entire BASIC Interpreter working on a <pink>CLI (command-line interface)</pink>. This project is written on Linux (and partially on Windows) and is designed to work on a Linux terminal.
+                <br>The interpreter is supposed to work like <pink>80s computers</pink> (with the 10, 20, 30, etc.) 
+                
+                <h1><pink>FEATURES</pink></h1>
+
+                <h3>Retro 80s style interpreter</h3>
+                As it's purpose is, the MicrowaveBASIC Interpreter is supposed to work like a 80s micro-computer BASIC Interpreter. That means you will type your code in the interpreter like this :
+                
+                <div class="code">
+                    10 P "Hello, World!"<br>
+                    20 G 10<br>
+                    RUN
+                </div>
+            </div>
         </div>
     </body>
 </html>
