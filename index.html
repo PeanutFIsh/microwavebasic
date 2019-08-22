@@ -89,7 +89,27 @@
                     RUN
                 </div>
 
-                work in progress.
+                <h3>Fully written from scratch</h3>
+                The entire code is written in C++ and <pink>from scratch</pink>. Nothing of the source code (except one utils.cpp function) has been copied from other websites.<br>
+                The entire code including the string, math and condition expression system, the engine and the interpreter has been entirely coded by me.
+
+                <h3>Simple expression system... probably too simple</h3>
+                Writing conditions and expressions with MicrowaveBASIC is simple but also very limited. (that's a con)<br>
+                <div class="code">
+                    // GOOD
+                    <br>IF A=1:P "A = 1"
+                    <br>// BAD
+                    <br>IF A==1:P "A = 1"
+                    <br>
+                    <br>// GOOD
+                    <br>=* A 1+2-3
+                    <br>// BAD (does not support parentheses)
+                    <br>=* A (1+2)-3 
+                </div>
+
+                Yea... It doesn't support parentesis and you can only use + - * / operators<br>
+                Same for strings, very limited, you can only add strings<br><br>
+                But <pink>no worries!</pink> I am planning to rewrite the expression system!
             </div>
         </div>
     </body>
