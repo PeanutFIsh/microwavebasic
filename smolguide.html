@@ -80,17 +80,117 @@
                     Example :
                     <div class="code">
                         10 p "2 plus 2 is "
-                        20 * 2 + 2
-                        30 p " minus one is "
-                        40 * 4 - 1
-                        // Quick maths!
-                        50 P ""
+                        <br>20 * 2 + 2
+                        <br>30 p " minus one is "
+                        <br>40 * 4 - 1
+                        <br>// Quick maths!
+                        <br>50 P ""
                     </div>
                 </div>
 
                 <div class="cdef">
-                    <c64><pink>=(*/$) (variable) (expression)</pink></c64>
+                    <c64><pink>=(*/$) (variable) (expression)</pink></c64><br><br>
+                    Sets a value to a specific variable.<br><br>
+
+                    Example :
+                    <div class="code">
+                        10 =* A 2+2-1
+                        <br>20 =$ A "2 plus 2 is 4 minus 1 is"
+                        <br>30 p A
+                        <br>40 * A
+                        <br>50 " Quick maths!"
+                        <br>// String and Int variables are separated.
+                    </div>
                 </div>
+
+                <div class="cdef">
+                    <c64><pink>G (line)</pink></c64><br><br>
+                    Go to a specific line of the program<br><br>
+
+                    Example :
+                    <div class="code">
+                        10 P "Do you like when I spam messages like that Owo"
+                        <br>20 G 10
+                        <br>// The famous 20 GOTO 10
+                    </div>
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>I($/*) (condition):(line of code)</pink></c64><br><br>
+                    If (condition) then execute (line of code)<br><br>
+
+                    Example :
+                    <div class="code">
+                        10 p "Type yes: "
+                        <br>20 ?$ A
+                        <br>30 I$ A!"yes":G 10
+                        <br>40 p "Type 69: "
+                        <br>50 ?* A
+                        <br>60 I* A!69:G 40
+                    </div>
+
+                    <br>To know more how to use the I command, you should <a href="#C3">have a look in the Chapter 3.</a>
+                </div>
+
+                <h3 id="C3">3. Expression system </h3>
+
+                The expression system is just a system to do... uhm... simple math, string and condition expressions.
+
+                <div class="cdef">
+                    <c64><pink>Math expressions</pink></c64><br><br>
+
+                    The Math expression system is extremely simple and limited. You don't have parentheses, can only operator with some basic operator (+ - * /) and works with variables<br>
+                    For example, <smolcode>2 + 2 - A</smolcode> is a valid expression. However, <smolcode>2 + (2 - A)</smolcode> is unfortunealy an invalid expression. This is planned to be added later.<br><br>
+
+                    Math expressions can be used anywhere it asks an integer expression, including conditions.
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>String expressions</pink></c64><br><br>
+
+                    Like the math one, the String expression system is also simple and limited. You can't do anything more than string addition like this : <smolcode>"Hello, " + "World!"</smolcode>, same as the math expressions, it supports variables.
+                    <br><br>
+
+                    Like math expressions, it can be used anywhere it asks a string expression, also including conditions.
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>Condition expressions</pink></c64><br><br>
+
+                    The condition expression system is nothing more than uhm.. conditions. And, again, very simple and limited.<br>
+                    Boolean operators for strings are = and !<br>
+                    Boolean operators for integers are = > < !<br><br>
+
+                    <div class="cdef">
+                        = is Equal, will return true if the value A and the value B are equal.<br>
+                        Example : <smolcode>I$ A="henlo":P "henlo frend"</smolcode> will print "henlo frend" if the variable A is equal to "henlo"<br><br>
+
+                        Works for strings and integers.
+                    </div>
+
+                    <div class="cdef">
+                        ! is the opposite of Equal, inequal. Returns true if Value A and Value B are inequal<br><br>
+
+                        Works for strings and integers.
+                    </div>
+
+                    <div class="cdef">
+                        > and < are less than and more than operators<br><br>
+
+                        Example :
+                        <div class="code">
+                            5 p "Please tell me the hour :"
+                            <br>10 ?* A
+                            <br>20 I* A < 12:P "Good morning!"
+                            <br>30 I* A > 12:I* A < 18:P "Good afternoon!"
+                            <br>40 I* A > 18:P "Good evening!"
+                        </div>
+                    </div>
+                    <br>
+                    Also there isn't any logical operators, sorry
+                </div>
+
+                <h1 class="left"><a href="index.html#SMOLGUIDE">Go back</a></h1>
             </div>
 
             <smol>Copyright (C) Microwave Micro-computers Inc.<br>
