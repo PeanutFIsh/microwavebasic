@@ -16,6 +16,9 @@ bool is_number(const std::string s)
 }
 
 bool starts_with(const std::string s, const std::string t) {
+    if (s == "")
+        return false;
+
     for (int i = 0; i < t.size(); ++i) {
         if (s.at(i) != t.at(i))
             return false;

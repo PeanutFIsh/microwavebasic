@@ -46,7 +46,7 @@ developer.
                     cout << to_string(i) << " " << PrgmMem[i] << endl;
             }
         } else if (cmdu == "NEW") {
-            for (int i = 0; i > 999999; ++i) {
+            for (int i = 0; i < 999999; ++i) {
                 PrgmMem[i] = "";
             }
         } else if (cmdu == "RUN") {
