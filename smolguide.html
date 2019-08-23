@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>SmolGuide™</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .cdef {
+                border-style: solid;
+                background-color:rgb(32, 32, 32);
+                
+                margin: 20px;
+                padding: 20px;
+
+                border-width: 5px;
+            }
+
+            .left {
+                text-align: left;
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <div class="center">
+            <div class="info">
+                <h1 class="left"><a href="index.html#SMOLGUIDE">Go back</a></h1>
+                <h3>2. Command reference</h3>
+                <b>To correctly understand some of the commands, I recommend you to take a look at the <a href="#C3">Chapter 3</a> !</b><br>
+                The Chapter 2 is about all the built-in commands with examples of each of these. (I love examples when I have a reference so I am gonna write my reference out of examples)
+                
+                <div class="cdef">
+                    <c64><pink>P (string) <white>||</white> p (string)</pink></c64><br><br>
+                    Those two commands will allows you to display a string expression<br><br>
+
+                    The difference between p and P is that P prints the string with a linebreak unlike p<br>
+                    <br>Example :
+                    <div class="code">
+                        10 p "Hello, "
+                        <br>20 P " World!"
+                    </div>
+                    The output is gonna be <smolcode>Hello, World!</smolcode> with a line break at the end.
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>?(*/$) (var)</pink></c64><br><br>
+                    Inputs what you type on the keyboard.<br><br>
+
+                    Example :
+                    <div class="code">
+                        // Inputs a string then print it
+                        <br>10 ?$ A
+                        <br>20 P A
+                        <br>
+                        <br>// Inputs an integer then print it
+                        <br>10 ?* A
+                        <br>20 * A
+                        <br>30 P ""
+                    </div>
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>// (COMMENT)</pink></c64>
+                    <br><br>Example :
+                    <div class="code">
+                        // If you don't know what a comment then you have an IQ under average
+                        <br>// I'll put an Example anyways
+                        <br>
+                        <br>P "BTW I use Arch"
+                        <br>// Displays "BTW I use Arch" (glorious arch user #linuxmasterrace)
+                        <br>
+                        <br>P "Also using comments" // Like this doesn't work
+                    </div>
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>* (EXPRESSION)</pink></c64><br><br>
+                    Prints a math expression<br><br>
+
+                    Example :
+                    <div class="code">
+                        10 p "2 plus 2 is "
+                        20 * 2 + 2
+                        30 p " minus one is "
+                        40 * 4 - 1
+                        // Quick maths!
+                        50 P ""
+                    </div>
+                </div>
+
+                <div class="cdef">
+                    <c64><pink>=(*/$) (variable) (expression)</pink></c64>
+                </div>
+            </div>
+
+            <smol>Copyright (C) Microwave Micro-computers Inc.<br>
+                IBM Font <a href="https://int10h.org/oldschool-pc-fonts/fontlist/"> by int10h</a><br>
+                Commodore 64 Font <a href="https://www.dafont.com/commodore-64.font">found on DaFont lol</a></smol>
+        </div>
+    </body>
+</html>

@@ -1,88 +1,24 @@
 <html>
     <head>
         <title>MicrowaveBASIC</title>
-        <style>
-            .center {
-                text-align: center;
-            }
-
-            .info {
-                margin-top: 75px;
-                margin-bottom: 100px;
-                margin-left: 100px;
-                margin-right: 100px;
-
-                border-style: double;
-                border-color: lightgray;
-                border-width: 10px;
-
-                padding-left: 100px;
-                padding-right: 100px;
-                padding-top: 50px;
-                padding-bottom: 50px;
-            }
-
-            .code {
-                margin-left:300px;
-                margin-right: 300px;
-                padding: 5px;
-                
-                border-left: 5px solid  cyan;
-                background-color: blue;
-                color: white;
-                text-align: left;
-            }
-            h1 {
-                font-size: 72;
-                font-weight: normal;
-            }
-
-            h3 {
-                font-size: 24;
-                font-weight: normal;
-                color: cyan;
-            }
-            
-            body {
-                background-color: black;
-                color: white;
-                font-family: 'PxPlus IBM VGA8';
-            }
-
-            cyan {
-                color: cyan;
-            }
-
-            pink {
-                color: magenta;
-            }
-
-            @font-face {
-                font-family: 'PxPlus IBM VGA8';
-                src: url('ibm.woff');
-            }
-
-            img {
-                transform: scale(0.4);
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="center">
-            <img src="https://i.imgur.com/UaI1024.png"><br>
+            <img class="title" id="TITLE" src="basic.png"><br>
             <div class="info">
                 <h3>Welcome to the <pink>MicrowaveBASIC Homepage!</pink></h3>
+
+                <h3>[<a href="#FEATURES">Features</a> || <a href="#SMOLGUIDE">SmolGuide™</a> || <a href="#DOWNLOAD">Download</a>]</h3><br>
                 <cyan>MicrowaveBASIC</cyan> is a simple and open source BASIC Interpreter written in C++. Currently in ALPHA, the programming language is very limited.<br>
                 This is also the first ever C++ project I am working on. (lmao I am litterally learning the language at the same time I code this so expect stuff like bad optimization)<br>
                 <br>This is also a part of a project I am currently working on. Once done, the project will be introduced on youtube and an embed video will be shown on this page<br>
-                
-
                 <br><h3>What's the <pink>purpose</pink> of it?</h3>
                 
                 The purpose of <cyan>MicrowaveBASIC</cyan> is to remake an entire BASIC Interpreter working on a <pink>CLI (command-line interface)</pink>. This project is written on Linux (and partially on Windows) and is designed to work on a Linux terminal.
                 <br>The interpreter is supposed to work like <pink>80s computers</pink> (with the 10, 20, 30, etc.) 
                 
-                <h1><pink>FEATURES</pink></h1>
+                <h1 id="FEATURES"><pink>FEATURES</pink></h1>
 
                 <h3>Retro 80s style interpreter</h3>
                 As it's purpose is, the MicrowaveBASIC Interpreter is supposed to work like a 80s micro-computer BASIC Interpreter. That means you will type your code in the interpreter like this :
@@ -114,7 +50,57 @@
                 Yea... It doesn't support parentesis and you can only use + - * / operators<br>
                 Same for strings, very limited, you can only add strings<br><br>
                 But <pink>no worries!</pink> I am planning to rewrite the expression system!
+
+                <h1 id="SMOLGUIDE">SmolGuide™</h1>
+
+                <h3>Nani?</h3>
+                MicrowaveBASIC SmolGuide™ is a small guide that will make you know this language in a few minutes of reading.<br>
+
+                <h3>0. how tf do i use the interpreter?</h3>
+                Like any 80s micro-computer. <br>
+                <smolcode>NEW</smolcode> to clear the program<br>
+                <smolcode>LIST</smolcode> to check your program<br>
+                <smolcode>RUN</smolcode> to run your program<br>
+                <smolcode>(NUMBER) (LINE OF CODE)</smolcode> to add a line of code in your program.<br><br>
+                <smolcode>SAVE</smolcode> and <smolcode>LOAD</smolcode> are gonna be added later.
+
+                <h3>1. Can I have an overview?</h3>
+                Let's give you an overview of the programming language with a small code that I am going to explain. If you don't have the time or you are not interrested of the overview, you can skip to the chapter 2.<br>
+                <div class='code'>
+                    10 p "Hello! What's your name? "
+                    <br>20 ?$ A
+                    <br>30 I$ A="":G 60
+                    <br>40 I$ A!"":P "Hello, " + A + "! Nice to meet you!"
+                    <br>50 G 80
+                    <br>60 p "Looks like you typed nothing, please enter your name. "
+                    <br>70 G 20
+                </div>
+
+                Now let me explain this code.<br><br>
+                <div class='code'>10 p "Hello! What's your name? "</div>
+                This first line of code will <pink>print</pink> some text asking your name <pink>without line break</pink>. <smol>(see p command in Chapter 2)</smol><br><br>
+
+                <div class='code'>20 ?$ A</div>
+                This command (?$) will let you <pink>type anything and will input what you typed.</pink> (INPUT$ in most of BASIC interpreters) and will store it in the variable A. <smol>(see ? command in Chapter 2)</smol><br><br>
+
+                <div class='code'>30 I$ A="":G 60</div>
+                <pink>If</pink> the string A is equal to "" (if you typed nothing), then the program will <pink>jump to line 60</pink> <smol>(see I command and G command in Chapter 2)</smol><br><br>
+
+                <div class='code'>40 I$ A:"":P "Hello, " + A + "! Nice to meet you!"</div>
+                If you actually typed something, the program will tell you "Hello, (name)! Nice to meet you!" <smol>(see P command in Chapter 2 and string expressions in Chapter 3)</smol><br><br>
+
+                <div class='code'>50 G 80</div>
+                This will just gonna take you to the end of the program, making it end.<br><br>
+
+                <div class='code'>60 p "Looks like you typed nothing, please enter your name. "<br>70 G 20</div>
+                This is the code that is gonna be run if you type nothing when will go back to the line 20 to ask your name again.
+
+                <h3><a href="smolguide.html">Chapter 2 and 3 of SmolGuide™ here!</a></h3>
             </div>
+
+            <smol>Copyright (C) Microwave Micro-computers Inc.<br>
+            IBM Font <a href="https://int10h.org/oldschool-pc-fonts/fontlist/"> by int10h</a><br>
+            Commodore 64 Font <a href="https://www.dafont.com/commodore-64.font">found on DaFont lol</a></smol>
         </div>
     </body>
 </html>

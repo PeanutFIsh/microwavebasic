@@ -1,0 +1,98 @@
+.center {
+    text-align: center;
+}
+
+.info {
+    margin-top: 75px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+
+    border-style: double;
+    border-color: lightgray;
+    border-width: 10px;
+
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: black;
+}
+
+white {
+    color: white;
+}
+
+smolcode {
+    background-color: blue;
+    font-family: IBM;
+}
+
+c64 {
+    font-family: C64;
+}
+
+.code {
+    font-family: C64;
+    max-width: 520px;
+    padding: 5px;
+    background-image: url('scanlines.png');
+
+    margin: 0 auto;
+    border-left: 5px solid  cyan;
+    background-color: blue;
+    color: white;
+    text-align: left;
+}
+h1 {
+    font-size: 72;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 24;
+    font-weight: normal;
+    color: cyan;
+}
+
+body {
+    background-color: darkblue;
+    color: white;
+    font-family: IBM;
+}
+
+smol {
+    font-size: 10;
+    color: salmon;
+}
+cyan {
+    color: cyan;
+}
+
+pink {
+    color: magenta;
+}
+
+@font-face {
+    font-family: C64;
+    src: url('c64a.ttf');
+}
+
+@font-face {
+    font-family: IBM;
+    src: url('ibm.woff');
+}
+
+a {
+    color: salmon;
+}
+
+img {
+    max-width: 75%;
+}
+
+.title {
+    border-style: double;
+    border-color: lightgray;
+    border-width: 10px;
+}
