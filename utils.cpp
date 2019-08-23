@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <boost/algorithm/string.hpp>
-#include <boost/algorithm/string/predicate.hpp>
 #include "utils.h"
 
 using namespace std;
@@ -15,6 +13,26 @@ bool is_number(const std::string s)
     std::string::const_iterator it = s.begin();
     while (it != s.end() && std::isdigit(*it)) ++it;
     return !s.empty() && it == s.end();
+}
+
+bool starts_with(const std::string s, const std::string t) {
+    for (int i = 0; i < t.size(); ++i) {
+        if (s.at(i) != t.at(i))
+            return false;
+    }
+
+    return true;
+}
+
+string to_upper(const std::string s) {
+    string o = "";
+
+    for (int i = 0; i < s.size(); ++i) {
+        if (isalpha(s.at(i)))
+            o += toupper(s.at(i));
+    }
+
+    return o;
 }
 
 // search a specific character

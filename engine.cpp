@@ -1,9 +1,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <boost/algorithm/string.hpp>
-#include <boost/algorithm/string/predicate.hpp>
-
 #include "engine.h"
 #include "utils.h"
 #include "libs/stringadd.h"
@@ -43,7 +40,7 @@ void ExecuteCode(std::string* code) {
 
 //Will execute only a single line.
 int ExecuteLine(std::string line, int pptr) {
-    if (boost::starts_with(line, "P ")) {               // " PRINT command
+    if (starts_with(line, "P ")) {               // " PRINT command
         string o = line.erase(0, 2);
         if (o == "") {
             cout << "!SYNTAX ERROR" << endl;
@@ -53,9 +50,9 @@ int ExecuteLine(std::string line, int pptr) {
             cout << evalStringAddition(o, stringvars) << endl;
         
         return 0;
-    } else if (boost::starts_with(line, "//"))          // Comment
+    } else if (starts_with(line, "//"))          // Comment
         return 0;
-    else if (boost::starts_with(line, "p ")) {           // ' PRINT command
+    else if (starts_with(line, "p ")) {           // ' PRINT command
         string o = line.erase(0, 2);
         if (o == "") {
             cout << "!SYNTAX ERROR" << endl;
@@ -64,7 +61,7 @@ int ExecuteLine(std::string line, int pptr) {
         else
             cout << evalStringAddition(o, stringvars);
         return 0;
-    } else if (boost::starts_with(line, "?* ")) {
+    } else if (starts_with(line, "?* ")) {
         string o = line.erase(0, 3);
         string inp = "";
         if (o == "" || !isalpha(o.at(0))) {
@@ -80,7 +77,7 @@ int ExecuteLine(std::string line, int pptr) {
             intvars[toupper(o.at(0)) - 'A'] = evalString(inp, intvars, false);
         }
         return 0;
-    } else if (boost::starts_with(line, "?$ ")) {
+    } else if (starts_with(line, "?$ ")) {
         string o = line.erase(0, 3);
         string inp = "";
 
@@ -93,7 +90,7 @@ int ExecuteLine(std::string line, int pptr) {
         }
 
         return 0;
-    } else if (boost::starts_with(line, "* ")) {
+    } else if (starts_with(line, "* ")) {
         string o = line.erase(0, 2);
 
         if (o == "" || !isalpha(o.at(0))) {
@@ -103,7 +100,7 @@ int ExecuteLine(std::string line, int pptr) {
             cout << to_string(intvars[toupper(o.at(0)) - 'A']);
             return 0;
         }
-    } else if (boost::starts_with(line, "=* ")) {
+    } else if (starts_with(line, "=* ")) {
         string o = line.erase(0, 3);
         string oa = line.erase(0, 1);
         if (o == "" || !isalpha(o.at(0)) || oa == "") {
@@ -113,7 +110,7 @@ int ExecuteLine(std::string line, int pptr) {
             intvars[toupper(o.at(0)) - 'A'] = evalString(oa, intvars, false);
             return 0;
         }
-    } else if (boost::starts_with(line, "G ")) {
+    } else if (starts_with(line, "G ")) {
         if (pptr == -1) {
             cout << "!PROGRAM ERROR" << endl;
             return -1;
@@ -129,7 +126,7 @@ int ExecuteLine(std::string line, int pptr) {
             return -1;
         }
         return pptr;
-    } else if (boost::starts_with(line, "I* ")) {
+    } else if (starts_with(line, "I* ")) {
         string o = line.erase(0, 3);
         int sepPos = searchChar(':', o);
         if (sepPos == -1) {                 // If sepPos = -1, that means not any separator has been detected
@@ -150,7 +147,7 @@ int ExecuteLine(std::string line, int pptr) {
         } else {
             return -1;
         }
-    } else if (boost::starts_with(line, "I$ ")) {
+    } else if (starts_with(line, "I$ ")) {
         string o = line.erase(0, 3);
         int sepPos = searchChar(':', o);
         if (sepPos == -1) {                 // If sepPos = -1, that means not any separator has been detected

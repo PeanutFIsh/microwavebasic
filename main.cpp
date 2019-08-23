@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <ctype.h>
-#include <boost/algorithm/string.hpp>
 #include "engine.h"
 #include "utils.h"
 #include "libs/stringop.h"
@@ -33,9 +32,7 @@ developer.
     int* dummylol = new int[26];
     while (true) {
         getline(cin, cmd);
-        
-        string cmdu = cmd;
-        boost::to_upper(cmdu);
+        string cmdu = to_upper(cmd);
 
         if (cmdu == "EXIT")
             break;
