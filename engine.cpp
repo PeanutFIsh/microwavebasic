@@ -10,7 +10,7 @@ using namespace std;
 
 // This cpp file contains the whole engine to run code.
 // Version of the software
-string VERSION = "0.1.0-alpha";
+string VERSION = "0.1.1-alpha";
 string* stringvars = new string[128];
 int* intvars = new int[128];
 

@@ -1,0 +1,10 @@
+0.1.1-alpha
+ - Got rid of boost library, wrote the needed functions from scratch
+ - Fixed NEW that wasn't working
+ - Fixed bugs
+ - Added compile.bat for Windows users (require gcc compiler added in PATH)
+ - Compilation scripts now make the bin folder if it doesn't exist.
+ - Fixed the < and > operators that wasn't working.
+
+0.1.0-alpha
+ - First release!
