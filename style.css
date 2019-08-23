@@ -3,10 +3,7 @@
 }
 
 .info {
-    margin-top: 75px;
-    margin-bottom: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
+    
 
     border-style: double;
     border-color: lightgray;
@@ -17,6 +14,9 @@
     padding-top: 50px;
     padding-bottom: 50px;
     background-color: black;
+    max-width: 1000px;
+
+    margin: 0 auto;
 }
 
 white {
