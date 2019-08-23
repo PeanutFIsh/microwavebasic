@@ -98,7 +98,7 @@ bool evalIntCondition(string condition, int* vars) {
     // (It must have only one)
     for (int i = 0; i < condition.size(); ++i) {        // Must check if there is only one operator
         c = condition.at(i);
-        if (c == '=' || c == '!')
+        if (c == '=' || c == '!' || c == '>' || c == '<')
             ++ops;
         // Operator at the first character
         if (i == 0 && ops == 1) {
@@ -138,8 +138,18 @@ bool evalIntCondition(string condition, int* vars) {
             return true;
         else
             return false;
-    } else {
+    } else if (op == '!') {
         if (evalString(expA, vars, false) != evalString(expB, vars, false))
+            return true;
+        else
+            return false;
+    } else if (op == '>') {
+        if (evalString(expA, vars, false) > evalString(expB, vars, false))
+            return true;
+        else
+            return false;
+    } else if (op == '<') {
+        if (evalString(expA, vars, false) > evalString(expB, vars, false))
             return true;
         else
             return false;
