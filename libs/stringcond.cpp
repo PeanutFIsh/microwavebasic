@@ -149,7 +149,7 @@ bool evalIntCondition(string condition, int* vars) {
         else
             return false;
     } else if (op == '<') {
-        if (evalString(expA, vars, false) > evalString(expB, vars, false))
+        if (evalString(expA, vars, false) < evalString(expB, vars, false))
             return true;
         else
             return false;

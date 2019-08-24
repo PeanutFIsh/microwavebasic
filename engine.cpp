@@ -110,6 +110,16 @@ int ExecuteLine(std::string line, int pptr) {
             intvars[toupper(o.at(0)) - 'A'] = evalString(oa, intvars, false);
             return 0;
         }
+    } else if (starts_with(line, "=$ ")) {
+        string o = line.erase(0, 3);
+        string oa = line.erase(0, 1);
+        if (o == "" || !isalpha(o.at(0)) || oa == "") {
+            cout << "!SYNTAX ERROR" << endl;
+            return -1;
+        } else {
+            stringvars[toupper(o.at(0)) - 'A'] = evalStringAddition(oa, stringvars);
+            return 0;
+        }
     } else if (starts_with(line, "G ")) {
         if (pptr == -1) {
             cout << "!PROGRAM ERROR" << endl;
@@ -143,9 +153,9 @@ int ExecuteLine(std::string line, int pptr) {
             if (a == -1)
                 return -1;
             else
-                return 0;
+                return a;
         } else {
-            return -1;
+            return 0;
         }
     } else if (starts_with(line, "I$ ")) {
         string o = line.erase(0, 3);
