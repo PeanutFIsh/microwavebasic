@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <ctype.h>
+#include <time.h>
+
 #include "stringop.h"
 using namespace std;
 
@@ -20,6 +22,7 @@ int* moveArrayLeft(int* arr, int start, int end) {
 }
 
 int evalString(std::string o, const int* vars, bool dev) {
+    srand(time(NULL));
     /* the vars array is the array where variables are stored.
        This has been made for being able to make arithmetics with
        variables of the BASIC Interpreter. If you don't need that, 
@@ -27,6 +30,7 @@ int evalString(std::string o, const int* vars, bool dev) {
 
     int* numbers = new int[100];
     int* ops = new int[99];  // 0 = Nothing | 1 = + | 2 = - | 3 = * | 4 = /
+    int* parentheses = new int[100];    // 0 = None | 1 = ( | 2 = )
     // Supported operators : * / + -
     // Parentheses aren't supported.
     char c;
@@ -41,7 +45,7 @@ int evalString(std::string o, const int* vars, bool dev) {
             return 0;
         }
         c = o.at(i);
-        if (previousType == 0) {
+        if (previousType == 0 || previousType == 2) {
             if (isoperator(c)) {
                 cout << "[stringop.cpp] Syntax Error! (Misplaced operator)" << endl;
                 return 0;
@@ -50,9 +54,19 @@ int evalString(std::string o, const int* vars, bool dev) {
                 numbers[ptr] = c - '0';
                 continue;
             } else if (isalpha(c)) {
-                previousType = 3;
-                numbers[ptr] = vars[toupper(c) - 'A'];
-                continue;
+                if (isupper(c)) {           // User defined variables
+                    previousType = 3;
+                    numbers[ptr] = vars[toupper(c) - 'A'];
+                    continue;
+                } else if (islower(c)) {    // System variables
+                    previousType = 3;
+                    if (c == 'r')
+                        numbers[ptr] = rand() % 1000;
+                    else {
+                        cout << "[stringop.cpp] Syntax Error! (Invalid system variable)" << endl;
+                        return 0;
+                    }
+                }
             } else if (c == ' ')
                 continue;
             else {
@@ -60,7 +74,7 @@ int evalString(std::string o, const int* vars, bool dev) {
                 return 0;
             }
 
-        } else if (previousType == 1) {
+        } else if (previousType == 1 || previousType == 3) {
             if (isoperator(c)) {
                 previousType = 2;
                 if (c == '+')
@@ -77,47 +91,6 @@ int evalString(std::string o, const int* vars, bool dev) {
             } else if (isdigit(c)) {
                 numbers[ptr] = numbers[ptr] * 10 + (c - '0');
                 continue; // No need to change the previous type since it's still the same
-            } else if (isalpha(c)) {
-                cout << "[stringop.cpp] Syntax Error! (Misplaced variable)" << endl;
-                return 0;
-            } else if (c == ' ')
-                continue;
-            else {
-                cout << "[stringop.cpp] Syntax Error! (Unknown character)" << endl;
-                return 0;
-            }
-        } else if (previousType == 2) {
-            if (isoperator(c)) {
-                cout << "[stringop.cpp] Syntax Error! (Misplaced operator)" << endl;
-                return 0;
-            } else if (isdigit(c)) {
-                previousType = 1;
-                numbers[ptr] = c - '0';
-                continue;
-            } else if (isalpha(c)) {
-                previousType = 3;
-                numbers[ptr] = vars[toupper(c) - 'A'];
-                continue;
-            } else if (c == ' ')
-                continue;
-            else {
-                cout << "[stringop.cpp] Syntax Error! (Unknown character)" << endl;
-                return 0;
-            }
-        } else if (previousType == 3) {
-            if (isoperator(c)) {
-                previousType = 2;
-                if (c == '+')
-                    ops[ptr] = 1;
-                if (c == '-')
-                    ops[ptr] = 2;
-                if (c == '*')
-                    ops[ptr] = 3;
-                if (c == '/')
-                    ops[ptr] = 4;
-                
-                ++ptr;
-                continue;
             } else if (isalpha(c)) {
                 cout << "[stringop.cpp] Syntax Error! (Misplaced variable)" << endl;
                 return 0;

@@ -93,11 +93,11 @@ int ExecuteLine(std::string line, int pptr) {
     } else if (starts_with(line, "* ")) {
         string o = line.erase(0, 2);
 
-        if (o == "" || !isalpha(o.at(0))) {
+        if (o == "") {
             cout << "!SYNTAX ERROR" << endl;
             return -1;
         } else {
-            cout << to_string(intvars[toupper(o.at(0)) - 'A']);
+            cout << to_string(evalString(o, intvars, false));
             return 0;
         }
     } else if (starts_with(line, "=* ")) {
