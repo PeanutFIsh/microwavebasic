@@ -1,9 +1,30 @@
 #include <iostream>
 #include <string>
 #include <ctype.h>
+
+/* 
+Source files map :
+    - engine.cpp
+    The core of this program, will interpret the program.
+    - main.cpp
+    The interpreter, contains the program where you can type commands and your program.
+    - utils.cpp
+    Contains some general purpose useful commands.
+    - libs/fileman.cpp
+    Contains function to manage BASIC program files (save/load/delete).
+    - libs/stringadd.cpp
+    Contains simple string manipulation.
+    - libs/stringcond.cpp
+    Contains the condition system.
+    -libs/stringop.cpp
+    Contains simple math eval functions.
+*/
 #include "engine.h"
 #include "utils.h"
+
 #include "libs/stringop.h"
+#include "libs/fileman.h"
+
 using namespace std;
 
 /*
@@ -28,12 +49,12 @@ developer.
     BootScreen();
     cout << endl;
     string cmd;
+    string co;
     int o;
     int* dummylol = new int[26];
     while (true) {
         getline(cin, cmd);
         string cmdu = to_upper(cmd);
-
         if (cmdu == "EXIT")
             break;
         else if (is_number(trimString(cmd, 0, searchChar(' ', cmd) - 1))) {
@@ -49,7 +70,16 @@ developer.
             for (int i = 0; i < 999999; ++i) {
                 PrgmMem[i] = "";
             }
-        } else if (cmdu == "RUN") {
+        }
+        else if (starts_with(cmdu, "SAVE")) {
+            co = cmdu.erase(0, 4);
+
+            if (co == "")
+                cout << "!!SYNTAX ERROR" << endl;
+            else
+                saveFile(co, PrgmMem, true);
+        }
+        else if (cmdu == "RUN") {
             ExecuteCode(PrgmMem);
         }
         else
