@@ -1,2 +1,4 @@
 bin/*
 tests/*
+.vscode/*
+.vscode/settings.json

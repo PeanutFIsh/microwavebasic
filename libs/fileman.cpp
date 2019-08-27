@@ -4,6 +4,8 @@
 #include <string>
 
 #include "fileman.h"
+#include "../utils.h"
+#include "stringop.h"
 using namespace std;
 
 inline bool file_exists (const std::string& name) {
@@ -12,7 +14,7 @@ inline bool file_exists (const std::string& name) {
 }
 
 // File managing functions to save/load BAS Files
-int saveFile(string name, string* prgmArray, bool overwrite) {
+int saveFile(const string name, const string* prgmArray, const bool overwrite) {
     string fpname = "programs/" + name;
     
 
@@ -31,15 +33,44 @@ int saveFile(string name, string* prgmArray, bool overwrite) {
         }
     }
 
-    cout << "Done!" << endl;
+    cout << "[fileman.cpp] Done!" << endl;
     ofstream basfile;
     basfile.open(fpname);
 
-    for (int i = 0; i < 999999; ++i) {
-        if (prgmArray[i] == "")
-            continue;
-        
-        basfile << to_string(i) << " " << prgmArray[i] << "\n";
+    if (basfile.is_open()) {
+        for (int i = 0; i < 999999; ++i) {
+            if (prgmArray[i] == "")
+                continue;
+            
+            basfile << to_string(i) << " " << prgmArray[i] << "\n";
+        }
+        basfile.close();
+    } else {
+        cout << "[fileman.cpp] File Error! " << "Unable to open file." << endl;
+        return 1;
+    }
+    return 0;
+}
+
+int loadFile(const string name, string* prgmArray) {
+    string fpname = "programs/" + name;
+    if (!file_exists(fpname)) {
+        cout << "[fileman.cpp] File Error! " << name << "doesn't exist." << endl;
+        return 1;
+    }
+
+    string line;
+    ifstream basfile;
+    basfile.open(fpname);
+
+    string tmp;
+    int linenum;
+    while (getline(basfile, line)) {
+        if (is_number(trimString(line, 0, searchChar(' ', line) - 1))) {
+            tmp = trimString(line, 0, searchChar(' ', line));
+            int linnum = evalString(tmp, new int[26], false);  // Lmao I can't code :D
+            prgmArray[linnum] = line.erase(0, tmp.size());
+        }
     }
 
     return 0;

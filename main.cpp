@@ -51,7 +51,6 @@ developer.
     string cmd;
     string co;
     int o;
-    int* dummylol = new int[26];
     while (true) {
         getline(cin, cmd);
         string cmdu = to_upper(cmd);
@@ -59,7 +58,7 @@ developer.
             break;
         else if (is_number(trimString(cmd, 0, searchChar(' ', cmd) - 1))) {
             string a = trimString(cmd, 0, searchChar(' ', cmd));
-            int linnum = evalString(a, dummylol, false);  // Lmao I can't code :D
+            int linnum = evalString(a, new int[26], false);  // Lmao I can't code :D
             PrgmMem[linnum] = cmd.erase(0, a.size());
         } else if (cmdu == "LIST") {
             for (int i = 0; i < 999999; ++i) {
@@ -77,7 +76,14 @@ developer.
             if (co == "")
                 cout << "!!SYNTAX ERROR" << endl;
             else
-                saveFile(co, PrgmMem, true);
+                saveFile(co + ".BAS", PrgmMem, true);
+        } else if (starts_with(cmdu, "LOAD")) {
+            co = cmdu.erase(0, 4);
+
+            if (co == "")
+                cout << "!!SYNTAX ERROR" << endl;
+            else
+                loadFile(co + ".BAS", PrgmMem);
         }
         else if (cmdu == "RUN") {
             ExecuteCode(PrgmMem);

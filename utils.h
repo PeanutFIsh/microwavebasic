@@ -7,4 +7,5 @@ int searchChar(char, std::string);
 std::string trimString(std::string, int, int);
 bool starts_with(const std::string, const std::string);
 std::string to_upper(const std::string);
+std::string* splitString(const std::string, const char);
 #endif

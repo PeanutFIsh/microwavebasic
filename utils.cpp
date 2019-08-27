@@ -48,7 +48,7 @@ int searchChar(char target, string s) {
     return -1;  // Returns -1 if nothing has been found
 }
 
-// To split spaces and put every words into a string array
+// To split spaces and put every words into a string array. Thanks Stack Overflow lol
 std::string* splitSpaces(std::string line)
 {
     string* arr = new string[20];
@@ -64,6 +64,7 @@ std::string* splitSpaces(std::string line)
     return arr;
 }
 
+// To trim strings
 string trimString(string s, int start, int end) {
     string o = "";
     for (int i = start; i <= end; ++i) {
@@ -71,4 +72,29 @@ string trimString(string s, int start, int end) {
     }
 
     return o;
+}
+
+// Count how many times there is one specific character
+int countChar(const string s, const char c) {
+    int count = 0;
+    for (int i = 0; i < s.size(); ++i) {
+        if (s.at(i) == c)
+            ++count;
+    }
+
+    return count;
+}
+
+// To split into array
+string* splitString(const string s, const char c) {
+    string* sarr = new string[countChar(s, c) + 1];
+    int ptr = 0;
+    for (int i = 0; i < s.size(); ++i) {
+        if (s.at(i) == c) {
+            ++ptr; continue;
+        }
+        sarr[ptr] += s.at(i);
+    }
+
+    return sarr;
 }
