@@ -1,5 +1,5 @@
 #ifndef STRINGADD_H
 #define STRINGADD_H
 
-std::string evalStringAddition(std::string, const std::string*);
+std::string evalStringAddition(std::string, const std::string*, const int*);
 #endif

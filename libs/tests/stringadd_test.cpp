@@ -7,16 +7,19 @@ using namespace std;
 
 //Making an array
 string* vars = new string[26];
-
+int* ivars = new int[26];
 int main() {
     // Storing some test variables
     vars[0] = "beanos";   // Variable A = "beanos"
     vars[1] = "shrek";   // Variable B = "shrek"
+
+    ivars[0] = 11;
+    ivars[1] = 22;
     string result;
 
     string ari;
     getline(cin, ari);
-    result = evalStringAddition(ari, vars);
+    result = evalStringAddition(ari, vars, ivars);
 
     cout << endl << "=========" << endl << "Result : \"" << result << "\"" << endl;
     return 0;

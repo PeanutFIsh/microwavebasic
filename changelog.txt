@@ -1,3 +1,11 @@
+0.2.0-alpha
+ - Fixed loads of bug because I can't code.
+ - Fixed some operators that wasn't still working.
+ - Added 'i' modifier in String operations.
+ - Updated compile.bat (Windows) and compile.sh (Linux)
+ - Added 'r' variable returning a random int between 0 and 1000
+ - You can now Save/Load files
+
 0.1.1-alpha
  - Got rid of boost library, wrote the needed functions from scratch
  - Fixed NEW that wasn't working

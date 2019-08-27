@@ -47,7 +47,7 @@ int ExecuteLine(std::string line, int pptr) {
             return -1;
         }
         else
-            cout << evalStringAddition(o, stringvars) << endl;
+            cout << evalStringAddition(o, stringvars, intvars) << endl;
         
         return 0;
     } else if (starts_with(line, "//"))          // Comment
@@ -59,7 +59,7 @@ int ExecuteLine(std::string line, int pptr) {
             return -1;
         }
         else
-            cout << evalStringAddition(o, stringvars);
+            cout << evalStringAddition(o, stringvars, intvars);
         return 0;
     } else if (starts_with(line, "?* ")) {
         string o = line.erase(0, 3);
@@ -117,7 +117,7 @@ int ExecuteLine(std::string line, int pptr) {
             cout << "!SYNTAX ERROR" << endl;
             return -1;
         } else {
-            stringvars[toupper(o.at(0)) - 'A'] = evalStringAddition(oa, stringvars);
+            stringvars[toupper(o.at(0)) - 'A'] = evalStringAddition(oa, stringvars, intvars);
             return 0;
         }
     } else if (starts_with(line, "G ")) {
@@ -168,7 +168,7 @@ int ExecuteLine(std::string line, int pptr) {
         string argA = trimString(o, 0, sepPos - 1);
         string argB = trimString(o, sepPos + 1, line.size() - 1);
 
-        bool condi = evalStrCondition(argA, stringvars);
+        bool condi = evalStrCondition(argA, stringvars, intvars);
         if (condi) {
             int a = ExecuteLine(argB, pptr);
             if (a == -1)

@@ -5,7 +5,7 @@
 using namespace std;
 // This code allows to perform string addition
 
-std::string evalStringAddition(std::string o, const string* vars) {
+std::string evalStringAddition(std::string o, const string* vars, const int* intvars) {
     string* strings = new string[50];
     string outputStr = "";
 
@@ -14,7 +14,8 @@ std::string evalStringAddition(std::string o, const string* vars) {
     int ptr = 0;            // Array pointer
     int endline;            // End of array. Variable for optimization purposes.
     bool isInQuotes = false;
-
+    char pmc;               // Previous modifier char
+    // O = None | 1 = Quoted text | 2 = variable | 3 = Operator | 4 = Modifier
     for (int i = 0; i < o.size(); ++i) {
         if (ptr > 48) {     // To avoid out of range error
             cout << "[stringadd.cpp] Syntax Error! (Pointer out of range)" << endl;
@@ -40,26 +41,31 @@ std::string evalStringAddition(std::string o, const string* vars) {
                 isInQuotes = true;
                 continue;
             } else if (isalpha(c)) {
-                strings[ptr] = vars[toupper(c) - 'A'];
-                previousType = 2;
-                ++ptr;
-                continue;
+                if (isupper(c)) {
+                    strings[ptr] = vars[toupper(c) - 'A'];
+                    previousType = 2;
+                    ++ptr;
+                    continue;
+                } else if (islower(c)) {
+                    if (c == 'i')
+                        previousType = 4;
+                }
             } else if (c == '+') {
                 cout << "[stringadd.cpp] Syntax Error! (Misplaced operator)" << endl;
-                return "ERR";
+                return "!ERR";
             } else if (c == ' ') {
                 continue;
             } else {
                 cout << "[stringadd.cpp] Syntax Error! (Unknown character)" << endl;
-                return "ERR";
+                return "!ERR";
             }
         } else if (previousType == 1 || previousType == 2) {
             if (c == '"') {
                 cout << "[stringadd.cpp] Syntax Error! (Misplaced quote)" << endl;
-                return "ERR";
+                return "!ERR";
             } else if (isalpha(c)) {
                 cout << "[stringadd.cpp] Syntax Error! (Misplaced variable)" << endl;
-                return "ERR";
+                return "!ERR";
             } else if (c == '+') {
                 previousType = 3;
                 ++ptr;
@@ -68,7 +74,17 @@ std::string evalStringAddition(std::string o, const string* vars) {
                 continue;
             } else {
                 cout << "[stringadd.cpp] Syntax Error! (Unknown character)" << endl;
-                return "ERR";
+                return "!ERR";
+            }
+        } else if (previousType == 4) {
+            if (!isalpha(c) || !isupper(c)) {
+                cout << "[stringadd.cpp] Syntax Error! (Variable expected)" << endl;
+                return "!ERR";
+            } else {
+                previousType = 2;
+                strings[ptr] = to_string(intvars[c - 'A']);
+                ++ptr;
+                continue;
             }
         }
     }

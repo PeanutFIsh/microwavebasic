@@ -33,8 +33,8 @@ int evalString(std::string o, const int* vars, bool dev) {
     int* parentheses = new int[100];    // 0 = None | 1 = ( | 2 = )
     // Supported operators : * / + -
     // Parentheses aren't supported.
-    char c;
-    int previousType = 0;    // O = Nothing | 1 = Number | 2 = Operator | 3 = Variable
+    char c, pmc;
+    int previousType = 0;    // O = Nothing | 1 = Number | 2 = Operator | 3 = Variable | 4 = Modifier
     int ptr = 0;             // Pointer
     int endline;             // Position of the array where it ends
 

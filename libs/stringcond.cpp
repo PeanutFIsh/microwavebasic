@@ -15,7 +15,7 @@ string trimStr(string s, int start, int end) {
 }
 
 // To eval strings
-bool evalStrCondition(string condition, std::string* vars) {
+bool evalStrCondition(string condition, std::string* vars, int* ivars) {
     char c;
     int ops = 0;
     int operatorPos = 0;
@@ -67,12 +67,12 @@ bool evalStrCondition(string condition, std::string* vars) {
     expB = trimStr(condition, operatorPos + 1, condition.size() - 1);
 
     if (op == '=') {
-        if (evalStringAddition(expA, vars) == evalStringAddition(expB, vars))
+        if (evalStringAddition(expA, vars, ivars) == evalStringAddition(expB, vars, ivars))
             return true;
         else
             return false;
     } else {
-        if (evalStringAddition(expA, vars) != evalStringAddition(expB, vars))
+        if (evalStringAddition(expA, vars, ivars) != evalStringAddition(expB, vars, ivars))
             return true;
         else
             return false;
