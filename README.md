@@ -1,3 +1,3 @@
-![logo](https://i.imgur.com/UaI1024.png)
+![logo](https://peanutfish.github.io/microwavebasic/basic_inverted.png)
 Simple BASIC Interpreter written in C++ just for fun.
 WIP.
